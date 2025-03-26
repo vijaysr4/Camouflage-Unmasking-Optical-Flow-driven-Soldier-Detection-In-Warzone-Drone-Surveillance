@@ -1,5 +1,8 @@
-1_raft/
 flownet2-pytorch/
 pytorch-spynet/
 spynet/
 Xview/
+RAFT/
+cache_folder/
+yolo11n.pt
+yolov5s.pt

@@ -1,0 +1,10 @@
+metric,overall_mean
+epe_all,3.716
+epe_matched,2.531
+epe_unmatched,10.273
+d0_10,4.221
+d10_60,1.935
+d60_140,1.389
+s0_10,1.754
+s10_40,5.114
+s40_plus,28.869

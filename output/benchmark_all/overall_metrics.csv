@@ -1,0 +1,11 @@
+metric,overall_mean
+epe_all,10.327
+epe_matched,9.234
+epe_unmatched,17.652
+d0_10,10.433
+d10_60,9.437
+d60_140,8.269
+s0_10,2.319
+s10_40,10.247
+s40_plus,57.981
+spynet_epe_all,3.716

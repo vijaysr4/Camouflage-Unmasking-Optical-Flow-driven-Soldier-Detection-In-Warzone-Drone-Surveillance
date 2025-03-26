@@ -3,26 +3,20 @@ import cv2
 import torch
 import numpy as np
 
-##############################################################################
-# 1. FlowNet2 Imports (adjust if your installed version differs)
-##############################################################################
+
 try:
     from flownet2_pytorch.models import FlowNet2  # or from flownet2_pytorch import FlowNet2
 except ImportError:
     print("ERROR: FlowNet2 not found. Make sure you've installed flownet2-pytorch correctly.")
     exit()
 
-##############################################################################
-# 2. Paths and Settings
-##############################################################################
+
 VIDEO_PATH = "drone_footage/cut1.mp4"               # Path to your video
 CHECKPOINT_PATH = "FlowNet2_checkpoint.pth.tar"     # Pretrained checkpoint
 OUTPUT_DIR = "./out_dro"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-##############################################################################
-# 3. Read the 5th Frame and (Last−5)th Frame from the Video
-##############################################################################
+
 cap = cv2.VideoCapture(VIDEO_PATH)
 if not cap.isOpened():
     print(f"Cannot open video: {VIDEO_PATH}")
@@ -58,9 +52,7 @@ if not ret2:
 
 cap.release()
 
-##############################################################################
-# 4. Initialize FlowNet2 and Load Checkpoint
-##############################################################################
+
 class Args:
     """Dummy class to hold FlowNet2 settings."""
     fp16 = False
@@ -79,12 +71,7 @@ model.load_state_dict(checkpoint["state_dict"], strict=False)
 model.cuda()
 model.eval()
 
-##############################################################################
-# 5. Preprocess the Two Frames for FlowNet2
-#
-# FlowNet2 expects input as [N, 6, H, W], where the first 3 channels are the
-# first image (RGB) and the next 3 channels are the second image (RGB).
-##############################################################################
+
 def preprocess_frame_for_flownet2(img_bgr):
     """
     Convert a BGR uint8 image (H,W,3) -> Float32 [3,H,W] in RGB order,
